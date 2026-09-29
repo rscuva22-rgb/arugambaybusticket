@@ -60,6 +60,65 @@
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500 selection:text-white pb-24 lg:pb-12">
+  <!-- Standby Queue Announcement Modal (Auto-pops up on load) -->
+  <div id="standbyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md transition-opacity duration-300">
+    <div class="relative w-full max-w-lg bg-slate-900 border border-rose-500/40 rounded-3xl p-6 sm:p-7 shadow-2xl shadow-rose-950/50 transform transition-all scale-100 animate-in">
+      
+      <!-- Close icon button -->
+      <button onclick="closeStandbyModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Badge & Icon Header -->
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-rose-600/30 shrink-0">
+          <i data-lucide="bell-ring" class="w-6 h-6 animate-bounce"></i>
+        </div>
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/40">
+            නිල නිවේදනයයි &bull; HOUSE FULL
+          </span>
+          <h3 class="text-base sm:text-lg font-black text-white font-display leading-tight mt-0.5">
+            අරුගම්බේ වාර්ෂික විනෝද චාරිකාව - 2026
+          </h3>
+        </div>
+      </div>
+
+      <!-- Sinhala Notification Message Body -->
+      <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-2xl border border-slate-800">
+        <p class="font-bold text-rose-300 flex items-center gap-1.5">
+          <i data-lucide="alert-circle" class="w-4 h-4 text-rose-400 shrink-0"></i>
+          <span>බස් රථයේ සියලුම ආසන වෙන් කර අවසන් බව සතුටින් දන්වා සිටිමු!</span>
+        </p>
+        <p>
+          ඔබට ආසනයක් වෙන් කර ගැනීමට නොහැකි වූයේ නම්, <strong>Standby Waiting List (පොරොත්තු ලේඛනය)</strong> සඳහා දැන්ම ලියාපදිංචි විය හැක.
+        </p>
+        <div class="pt-2 border-t border-slate-800/80 text-[11px] sm:text-xs text-slate-400 space-y-1">
+          <div class="flex items-start gap-1.5">
+            <span class="text-amber-400 font-bold">&bull;</span>
+            <span>දැනට වෙන් කළ ආසනයක් අවලංගු වුවහොත් හෝ ගෙවීම් පැහැර හැරියහොත් Waiting List අනුපිළිවෙලට ආසන හිමිවේ.</span>
+          </div>
+          <div class="flex items-start gap-1.5">
+            <span class="text-amber-400 font-bold">&bull;</span>
+            <span>ආසනයක් හිස් වූ වහාම සංවිධායක කමිටුව ඔබව දුරකථනයෙන් සම්බන්ධ කර ගනු ලැබේ.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-5 flex flex-col sm:flex-row gap-2.5">
+        <button onclick="goToWaitingList()" class="flex-1 bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-rose-600/30 flex items-center justify-center gap-2 text-xs sm:text-sm transition-all">
+          <i data-lucide="user-plus" class="w-4 h-4"></i>
+          <span>Waiting List එකට නම දාන්න</span>
+        </button>
+        <button onclick="closeStandbyModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 px-4 rounded-xl text-xs sm:text-sm transition-colors border border-slate-700">
+          හරි, තේරුම් ගත්තා
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 
   <!-- Top Navigation Bar -->
   <nav class="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-lg">
@@ -921,6 +980,22 @@
       setInterval(fetchLiveBookings, 15000);
       setTimeout(() => inspectSeat(1), 800);
     });
-  </script>
+  
+    function closeStandbyModal() {
+      const m = document.getElementById('standbyModal');
+      if (m) m.classList.add('hidden');
+    }
+
+    function openStandbyModal() {
+      const m = document.getElementById('standbyModal');
+      if (m) m.classList.remove('hidden');
+    }
+
+    function goToWaitingList() {
+      closeStandbyModal();
+      const el = document.getElementById('waitingListCard');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
 </body>
 </html>
