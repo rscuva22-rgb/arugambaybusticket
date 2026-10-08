@@ -147,7 +147,7 @@
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
             </span>
-            <span id="navSeatStatus">All 55 Seats Full</span>
+            <span>All 55 Seats Full</span>
           </div>
 
           <button id="adminBtn" onclick="handleAdminLogin()" class="inline-flex items-center gap-1.5 text-xs font-bold bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 px-3 py-2 rounded-xl transition-all">
@@ -325,6 +325,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Notice 1 -->
         <div class="glass-card rounded-2xl p-4 relative overflow-hidden group hover:border-sky-500/40 transition-all">
           <div class="flex items-center gap-2 mb-2">
             <span class="bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">විශේෂයි</span>
@@ -336,6 +337,7 @@
           </p>
         </div>
 
+        <!-- Notice 2 -->
         <div class="glass-card rounded-2xl p-4 relative overflow-hidden group hover:border-amber-500/40 transition-all">
           <div class="flex items-center gap-2 mb-2">
             <span class="bg-amber-500/20 text-amber-300 border border-amber-500/40 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">වැදගත්</span>
@@ -347,6 +349,7 @@
           </p>
         </div>
 
+        <!-- Notice 3 -->
         <div class="glass-card rounded-2xl p-4 relative overflow-hidden group hover:border-emerald-500/40 transition-all">
           <div class="flex items-center gap-2 mb-2">
             <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">සුභසාධන</span>
@@ -394,8 +397,8 @@
         </div>
       </div>
 
-      <!-- Bus Visual Seating Plan (2x2 Grid Layout) -->
-      <div class="max-w-lg mx-auto bg-slate-950 border-2 border-slate-800 rounded-[40px] p-5 shadow-2xl relative">
+      <!-- Bus Visual Seating Plan (2 x 2) -->
+      <div class="max-w-md mx-auto bg-slate-950 border-2 border-slate-800 rounded-[40px] p-5 shadow-2xl relative">
         <!-- Front / Windshield -->
         <div class="bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700/80 rounded-2xl p-3 mb-6 flex items-center justify-between text-xs text-slate-400">
           <div class="flex items-center gap-2 font-bold text-sky-400 tracking-wider">
@@ -481,6 +484,8 @@
 
           <!-- Waiting List Form -->
           <form id="waitingListForm" onsubmit="handleWaitingListSubmit(event)" class="space-y-4">
+            
+            <!-- 1. Name -->
             <div>
               <label for="wlName" class="block text-xs font-bold text-slate-300 mb-1">
                 1. Full Name <span class="text-rose-500">*</span>
@@ -489,6 +494,7 @@
                 class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
             </div>
 
+            <!-- 2. Category -->
             <div>
               <label for="wlType" class="block text-xs font-bold text-slate-300 mb-1">
                 2. Category <span class="text-rose-500">*</span>
@@ -501,6 +507,7 @@
               </select>
             </div>
 
+            <!-- 3. Starting Place -->
             <div>
               <label for="wlStartingPlace" class="block text-xs font-bold text-slate-300 mb-1">
                 3. Preferred Boarding Point <span class="text-rose-500">*</span>
@@ -515,6 +522,7 @@
               </select>
             </div>
 
+            <!-- 4. Connect Phone -->
             <div>
               <label for="wlContactNo" class="block text-xs font-bold text-slate-300 mb-1">
                 4. WhatsApp / Phone No <span class="text-rose-500">*</span>
@@ -524,6 +532,7 @@
                 class="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-slate-700 bg-slate-950 text-white focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
             </div>
 
+            <!-- 5. Seats Requested -->
             <div>
               <label for="wlSeatsNeeded" class="block text-xs font-bold text-slate-300 mb-1">
                 5. Seats Needed <span class="text-rose-500">*</span>
@@ -537,12 +546,14 @@
               </select>
             </div>
 
+            <!-- Submit Button -->
             <button type="submit" id="wlSubmitBtn"
               class="w-full bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-rose-600/20 transition-all flex items-center justify-center gap-2 cursor-pointer text-sm">
               <i data-lucide="clock-alert" class="w-4 h-4"></i>
               <span>Register on Waiting List</span>
             </button>
 
+            <!-- Status Banner -->
             <div id="wlStatusMessage" class="hidden text-xs p-3 rounded-xl border transition-all text-center"></div>
 
             <div class="pt-2 flex items-center justify-between text-[11px] text-slate-500">
@@ -564,9 +575,9 @@
     // Live Apps Script Webhook URL
     const GSHEET_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwq1KkmJJrbB1-Sg3wA-lVxNIO_xLsr93dXwNg31mCM1v2NQBEL1KMI0FhiTXDQrkPIsQ/exec";
 
-    // UPDATED FOR 55 SEATS TOTAL
+    // 55 Seats Total
     const TOTAL_BUS_SEATS = 55;
-    const COMMITTEE_SEATS = [50, 51]; // Dedicated committee seats
+    const COMMITTEE_SEATS = [53, 54, 55]; // Reserved committee seats
     const MEMBER_PRICE = 2500;
     const NON_MEMBER_PRICE = 3000;
     const ADMIN_PIN = "admin123";
@@ -659,7 +670,7 @@
       if (window.lucide) lucide.createIcons();
     }
 
-    // 2 x 2 GRID RENDERER FOR 55 SEATS
+    // Render the 2 x 2 Seating Grid: Left side preserved (2 seats), Right side updated to 2 seats
     function renderVirtualBusGrid() {
       const container = document.getElementById('virtualBusGrid');
       if (!container) return;
@@ -667,29 +678,27 @@
 
       let currentSeatNum = 1;
 
-      // Rows 1 - 12 (2 Left, Aisle, 2 Right) -> 12 * 4 = 48 Seats
-      for (let r = 1; r <= 12; r++) {
+      // Rows 1 to 13: 2 on Left, 2 on Right (13 rows x 4 = 52 seats)
+      for (let r = 1; r <= 13; r++) {
         const rowDiv = document.createElement('div');
         rowDiv.className = 'flex items-center justify-between gap-1 sm:gap-2';
 
-        // Left 2 Seats
+        // Left Pair (Unchanged: 2 seats)
         const leftPair = document.createElement('div');
         leftPair.className = 'flex items-center gap-1 sm:gap-1.5';
-        for (let i = 0; i < 2; i++) {
-          leftPair.appendChild(createVirtualSeatNode(currentSeatNum++));
-        }
+        leftPair.appendChild(createVirtualSeatNode(currentSeatNum++));
+        leftPair.appendChild(createVirtualSeatNode(currentSeatNum++));
 
-        // Aisle Indicator
+        // Center Aisle Indicator
         const aisleDiv = document.createElement('div');
         aisleDiv.className = 'w-6 text-center text-[10px] font-mono text-slate-600 select-none';
         aisleDiv.innerText = r;
 
-        // Right 2 Seats
+        // Right Pair (Re-arranged from 3 to 2 seats)
         const rightPair = document.createElement('div');
         rightPair.className = 'flex items-center gap-1 sm:gap-1.5';
-        for (let i = 0; i < 2; i++) {
-          rightPair.appendChild(createVirtualSeatNode(currentSeatNum++));
-        }
+        rightPair.appendChild(createVirtualSeatNode(currentSeatNum++));
+        rightPair.appendChild(createVirtualSeatNode(currentSeatNum++));
 
         rowDiv.appendChild(leftPair);
         rowDiv.appendChild(aisleDiv);
@@ -697,36 +706,9 @@
         container.appendChild(rowDiv);
       }
 
-      // Row 13 (2 Left, Aisle, 1 Right) -> 3 Seats (49, 50, 51)
-      const row13 = document.createElement('div');
-      row13.className = 'flex items-center justify-between gap-1 sm:gap-2';
-
-      const leftPair13 = document.createElement('div');
-      leftPair13.className = 'flex items-center gap-1 sm:gap-1.5';
-      leftPair13.appendChild(createVirtualSeatNode(currentSeatNum++)); // 49
-      leftPair13.appendChild(createVirtualSeatNode(currentSeatNum++)); // 50
-
-      const aisleDiv13 = document.createElement('div');
-      aisleDiv13.className = 'w-6 text-center text-[10px] font-mono text-slate-600 select-none';
-      aisleDiv13.innerText = '13';
-
-      const rightSingle13 = document.createElement('div');
-      rightSingle13.className = 'flex items-center gap-1 sm:gap-1.5';
-      rightSingle13.appendChild(createVirtualSeatNode(currentSeatNum++)); // 51
-      
-      // Invisible placeholder to keep balance with 2-seat side
-      const placeholder = document.createElement('div');
-      placeholder.className = 'w-9 h-10 sm:w-11 sm:h-12 opacity-0 pointer-events-none';
-      rightSingle13.appendChild(placeholder);
-
-      row13.appendChild(leftPair13);
-      row13.appendChild(aisleDiv13);
-      row13.appendChild(rightSingle13);
-      container.appendChild(row13);
-
-      // Row 14: Rear Bench (Seats 52, 53, 54, 55) -> 4 Seats
+      // Row 14: Rear Bench (Seats 53, 54, 55 -> 3 seats)
       const backRowDiv = document.createElement('div');
-      backRowDiv.className = 'pt-2 border-t border-slate-800 flex items-center justify-between gap-1';
+      backRowDiv.className = 'pt-2.5 mt-2 border-t border-slate-800 flex items-center justify-between gap-1';
 
       const backRowLabel = document.createElement('div');
       backRowLabel.className = 'text-[9px] font-bold uppercase tracking-wider text-slate-500 pl-1';
@@ -1010,6 +992,6 @@
       const el = document.getElementById('waitingListCard');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
-</script>
+  </script>
 </body>
 </html>
